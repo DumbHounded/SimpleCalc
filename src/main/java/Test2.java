@@ -4,34 +4,9 @@ import java.util.StringTokenizer;
 
 /**
  * Created by Михаил on 03.01.2016.
+ *
  */
 public class Test2 {
-
-    public double calc2(String e){
-        System.out.println(e);
-        int iOpenBracket,iFindBrackets;
-        iOpenBracket=iFindBrackets=-1;
-        //набор символов
-        char[] chs = e.toCharArray();
-        for (int i = 0; i < chs.length; i++) {
-            char ch = chs[i];
-            switch (ch) {
-                case '(':
-                    if (iFindBrackets == -1) iOpenBracket = i;
-                    iFindBrackets++;
-                    break;
-                case ')':
-                    if (iFindBrackets == 0) {
-                        calc2(e.substring(iOpenBracket+1, i));
-                    }
-                    iFindBrackets--;
-                    break;
-            }
-
-        }
-        return 0.0;
-    }
-
     public Double calc3(String e){
         StringTokenizer st = new StringTokenizer(e,"\\d +-()*/^",true);
         List<String> list = new LinkedList<>();
@@ -43,7 +18,7 @@ public class Test2 {
         while (st.hasMoreTokens()) {
             String t = st.nextToken();
             list.add(t);
-            int pri=-1;
+            int pri;
             switch (t){
                 case "(": pri =1;break;
                 case ")": pri =1;break;
